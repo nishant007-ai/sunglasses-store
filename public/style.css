@@ -1,0 +1,229 @@
+/* General Styling */
+body {
+    background: linear-gradient(135deg, #ffcc00, #ff6600);  /* Vibrant gradient background */
+    font-family: 'Roboto', sans-serif; /* Changed font for better appearance */
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Hero Section */
+#hero {
+    height: 100vh;
+    background: url('https://via.placeholder.com/1920x1080') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    animation: fadeIn 1.2s ease-in-out;
+    background-size: cover;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+    color: #ffcc00;
+    transition: transform 0.3s ease;
+    font-weight: 600;
+}
+
+.hero-content p {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* Button Hover Effect */
+.hero-content .btn {
+    text-decoration: none;
+    background-color: #ff6600;
+    color: white;
+    padding: 18px 30px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.hero-content .btn:hover {
+    background-color: #e05500;
+    transform: scale(1.1);
+}
+
+/* Navigation Bar */
+header nav {
+    background-color: #333;
+    padding: 15px 0;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+header nav a {
+    color: white;
+    margin: 0 20px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+header nav a:hover {
+    color: #ff6600;
+    transform: translateY(-5px);
+}
+
+/* Welcome Section */
+#welcome {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #ffcc00;
+    color: #333;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+}
+
+#welcome h1 {
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+}
+
+#welcome p {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+}
+
+/* Product Section */
+#products {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #f7f7f7;
+}
+
+#products h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #ff6600;
+}
+
+.product-card {
+    display: inline-block;
+    width: 280px;
+    margin: 25px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+    background: linear-gradient(135deg, #fff, #f7f7f7);
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    background-color: #fff7e6;
+}
+
+.product-card img {
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+.product-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.product-card p {
+    font-size: 1.1rem;
+    color: #ff6600;
+    margin: 5px 0;
+}
+
+.product-card button {
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    padding: 14px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-size: 1.1rem;
+}
+
+.product-card button:hover {
+    background-color: #e05500;
+    transform: scale(1.05);
+}
+
+/* Contact Section */
+#contact {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #f7f7f7;
+    animation: fadeIn 2s ease-in-out;
+}
+
+#contact h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #ff6600;
+}
+
+#contact .contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#contact input, #contact textarea {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 1.2rem;
+}
+
+#contact textarea {
+    height: 180px;
+    resize: none;
+}
+
+#contact button {
+    padding: 15px 30px;
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+#contact button:hover {
+    background-color: #e05500;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #333;
+    color: white;
+    margin-top: 40px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+} this is whole code and the send to the make remove hero section colur and the add their image'

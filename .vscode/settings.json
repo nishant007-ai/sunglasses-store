@@ -1,0 +1,19 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "firstmy sql connections",
+            "database": "myshop",
+            "username": "admin",
+            "password": "Nishant@5586"
+        }
+    ],
+    "liveServer.settings.port": 5503
+}

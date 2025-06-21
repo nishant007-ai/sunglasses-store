@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ff7600, #ffae00);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn 1.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .container {
+      width: 90%;
+      max-width: 600px;
+      padding: 20px;
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      color: #333;
+      animation: slideIn 1.5s ease;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(100px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    h1 {
+      text-align: center;
+      color: #ff7600;
+      font-size: 2.5rem;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+
+    input:focus, select:focus {
+      border-color: #ff7600;
+      box-shadow: 0 0 5px #ff7600;
+    }
+
+    button {
+      background-color: #ff7600;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+      transition: transform 0.3s, background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #e65c00;
+      transform: scale(1.05);
+    }
+
+    button:active {
+      transform: scale(0.95);
+    }
+
+    /* PhonePe QR Code */
+    .qr-code {
+      display: none;
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .qr-code img {
+      width: 200px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Download Button */
+    .download-btn {
+      background-color: #28a745;
+      margin-top: 10px;
+    }
+
+    .download-btn:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Checkout</h1>
+    <form id="checkoutForm">
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="address">Shipping Address:</label>
+      <input type="text" id="address" name="address" required>
+
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" name="phone" required>
+
+      <label for="paymentMethod">Payment Method:</label>
+      <select id="paymentMethod" name="paymentMethod" required onchange="showQR()">
+        <option value="" disabled selected>Select a payment method</option>
+        <option value="Cash on Delivery">Cash on Delivery</option>
+        <option value="PhonePe">PhonePe</option>
+      </select>
+
+      <!-- PhonePe QR Code Section -->
+      <div id="qrCode" class="qr-code">
+        <p>Scan this QR code to pay via PhonePe:</p>
+        <img id="qrImage" src="images/phonepe_qr.jpg" alt="PhonePe QR Code">
+        <br>
+        <a id="downloadLink" href="images/phonepe_qr.jpg" download="PhonePe_QR.jpg">
+          <button type="button" class="download-btn">Download QR Code</button>
+        </a>
+      </div>
+
+      <button type="submit">Confirm Purchase</button>
+    </form>
+  </div>
+
+  <script>
+    function showQR() {
+      var paymentMethod = document.getElementById("paymentMethod").value;
+      var qrSection = document.getElementById("qrCode");
+
+      if (paymentMethod === "PhonePe") {
+        qrSection.style.display = "block";
+      } else {
+        qrSection.style.display = "none";
+      }
+    }
+
+    document.getElementById("checkoutForm").addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent default form submission
+
+      const name = document.getElementById("name").value;
+      const address = document.getElementById("address").value;
+      const phone = document.getElementById("phone").value;
+      const paymentMethod = document.getElementById("paymentMethod").value;
+
+      if (paymentMethod === "PhonePe") {
+        alert("Please complete your payment via PhonePe before confirming your order.");
+      } else {
+        alert(
+          `Thank you for your purchase, ${name}!\n` +
+          `Your order will be shipped to:\n${address}\n` +
+          `Phone: ${phone}\n` +
+          `Payment Method: ${paymentMethod}`
+        );
+
+        window.location.href = `thankyou.html?name=${encodeURIComponent(name)}`;
+      }
+    });
+  </script>
+</body>
+</html>

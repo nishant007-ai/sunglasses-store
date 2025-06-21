@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Classic Aviators</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      display: flex;
+      padding: 20px;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .sidebar img {
+      width: 70px;
+      height: 70px;
+      border: 2px solid #ddd;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: border-color 0.3s ease;
+      object-fit: cover;
+    }
+
+    .sidebar img:hover {
+      border-color: #ff7600;
+    }
+
+    .main-image {
+      flex: 3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+    .main-image img {
+      width: 100%;
+      max-height: 600px;
+      border-radius: 10px;
+      cursor: pointer;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+
+    .main-image img.enlarge {
+      transform: scale(1.5); /* Zoom in when touched */
+    }
+
+    .details {
+      flex: 4;
+      margin-left: 20px;
+    }
+
+    .details h1 {
+      color: #333;
+    }
+
+    .details button {
+      padding: 10px 20px;
+      background-color: #ff7600;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .details button:hover {
+      background-color: #e65c00;
+    }
+
+    /* Introduction Section */
+    .intro {
+      background-color: #ff7600;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .unisex-label {
+      font-size: 20px;
+      font-weight: bold;
+      color: #ff7600;
+      margin-top: 10px;
+    }
+
+    /* Specifications Section */
+    .specifications {
+      margin-top: 20px;
+    }
+
+    .specifications h2 {
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+    }
+
+    .specifications table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .specifications th, .specifications td {
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+
+    .specifications th {
+      background-color: #f8f8f8;
+      text-align: left;
+    }
+
+    /* Zoom Overlay */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .overlay img {
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+
+    /* Discount Section */
+    .discount {
+      color: #ff7600;
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .original-price {
+      text-decoration: line-through;
+      color: #999;
+      font-size: 20px;
+    }
+
+    .offer-message {
+      color: green;
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 5px;
+    }
+
+    .price {
+      font-size: 48px;
+      color: black;  /* Changed to black */
+      font-weight: bold;
+    }
+
+    /* Video Section */
+    .video-section {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .video-section video {
+      width: 80%;
+      max-width: 800px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Introduction Section -->
+  <div class="intro">
+    <h1>Welcome to Classic Aviators</h1>
+    <p>Discover our premium collection of aviator sunglasses, crafted for style and durability. Perfect for any occasion!</p>
+    <p class="unisex-label">Unisex</p>
+  </div>
+
+  <div class="container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <img src="images/aviators1.jpg" alt="Thumbnail 1" onclick="changeImage('images/aviators1.jpg')">
+      <img src="images/aviators2.jpg" alt="Thumbnail 2" onclick="changeImage('images/aviators2.jpg')">
+      <img src="images/aviators3.jpg" alt="Thumbnail 3" onclick="changeImage('images/aviators3.jpg')">
+      <img src="images/aviators4.jpg" alt="Thumbnail 4" onclick="changeImage('images/aviators4.jpg')">
+      <img src="images/aviators5.jpg" alt="Thumbnail 5" onclick="changeImage('images/aviators5.jpg')">
+    </div>
+
+    <!-- Main Image -->
+    <div class="main-image">
+      <img id="productImage" src="images/aviators1.jpg" alt="Main Product Image" onclick="zoomImage(this)">
+    </div>
+
+    <!-- Details Section -->
+    <div class="details">
+      <h1>Classic Aviators</h1>
+      <p>Premium sunglasses designed for style and durability.</p>
+      <p>
+        <span class="original-price">₹3999</span> 
+        <span class="price">₹999</span>
+      </p>
+      <p class="offer-message">50% OFF</p>
+      <button onclick="redirectToCheckout()">Buy Now</button>
+    </div>
+  </div>
+
+  <!-- Video Section -->
+  <div class="video-section">
+    <h2>Watch the Classic Aviators in Action</h2>
+    <video controls>
+      <source src="video/classic_aviators.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <!-- Zoom Overlay -->
+  <div id="zoomOverlay" class="overlay" onclick="closeZoom()">
+    <img id="zoomedImage" src="" alt="Zoomed Image">
+  </div>
+
+  <script>
+    function changeImage(imageSrc) {
+      document.getElementById('productImage').src = imageSrc;
+    }
+
+    function zoomImage(imageElement) {
+      var zoomedImg = document.getElementById('zoomedImage');
+      var overlay = document.getElementById('zoomOverlay');
+      zoomedImg.src = imageElement.src;
+      overlay.style.display = 'flex';
+    }
+
+    function closeZoom() {
+      document.getElementById('zoomOverlay').style.display = 'none';
+    }
+
+    function redirectToCheckout() {
+      window.location.href = 'checkout.html'; // Replace with your actual checkout page URL
+    }
+  </script>
+</body>
+</html>
+
+
+  <!-- Specifications Section -->
+  <div class="specifications">
+    <h2>Specifications</h2>
+    <table>
+      <tr>
+        <th>Feature</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>Lens Material</td>
+        <td>Polarized Glass</td>
+      </tr>
+      <tr>
+        <td>Frame Material</td>
+        <td>Metal</td>
+      </tr>
+      <tr>
+        <td>UV Protection</td>
+        <td>100%</td>
+      </tr>
+      <tr>
+        <td>Weight</td>
+        <td>200 grams</td>
+      </tr>
+    </table>
+  </div>
+
+  <script>
+    function changeImage(imageSrc) {
+      document.getElementById('productImage').src = imageSrc;
+    }
+
+    function youAction() {
+      console.log("You clicked the 'You' button!");
+      alert("You clicked the 'You' button!");
+    }
+  </script>
+</body>
+</html>

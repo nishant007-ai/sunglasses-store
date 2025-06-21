@@ -1,0 +1,20 @@
+# Node modules
+node_modules/
+
+# Environment files
+.env
+
+# System files
+.DS_Store
+
+# IDE/editor
+.vscode/
+.idea/
+
+# Log files
+*.log
+
+# Others
+*.swp
+*.mp4
+*.sqlite

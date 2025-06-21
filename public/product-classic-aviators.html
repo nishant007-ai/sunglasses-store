@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Classic Aviators</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    .container {
+      display: flex;
+      padding: 20px;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .sidebar img {
+      width: 70px;
+      height: 70px;
+      border: 2px solid #ddd;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: border-color 0.3s ease;
+      object-fit: cover;
+    }
+
+    .sidebar img:hover {
+      border-color: #ff7600;
+    }
+
+    .main-image {
+      flex: 3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+    .main-image img {
+      width: 100%;
+      max-height: 600px;
+      border-radius: 10px;
+      cursor: pointer;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+
+    .details {
+      flex: 4;
+      margin-left: 20px;
+    }
+
+    .details h1 {
+      color: #333;
+    }
+
+    .details button {
+      padding: 10px 20px;
+      background-color: #ff7600;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;s
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    .details button:hover {
+      background-color: #e65c00;
+    }
+
+    .footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    .webcam-container {
+      position: relative;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin-top: 20px;
+    }
+
+    video, canvas {
+      max-width: 400px;
+      border: 2px solid #000;
+      border-radius: 5px;
+    }
+
+    .capture-btn {
+      margin-top: 10px;
+      padding: 10px 15px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .capture-btn:hover {
+      background-color: #218838;
+    }
+
+    #capturedPhoto {
+      margin-top: 10px;
+      display: none;
+      border: 2px solid #000;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="intro">
+    <h1>Welcome to Classic Aviators</h1>
+    <p>Discover our premium collection of aviator sunglasses.</p>
+  </div>
+
+  <div class="container">
+    <div class="sidebar">
+      <img src="hr.jpeg" onclick="changeImage('hr.jpeg')">
+      <img src="hk.jpeg" onclick="changeImage('hk.jpeg')">
+      <img src="hm.jpeg" onclick="changeImage('hm.jpeg')">
+    </div>
+
+    <div class="main-image">
+      <img id="productImage" src="hr.jpeg" onclick="zoomImage(this)">
+    </div>
+
+    <div class="details">
+      <h1>Classic Aviators</h1>
+      <p>Premium sunglasses designed for style and durability.</p>
+      <button onclick="redirectToCheckout()">Buy Now</button>
+      <button class="try-now-button" onclick="tryNow()">Try Now</button>
+    </div>
+  </div>
+
+  <div class="webcam-container" id="webcamContainer">
+    <video id="webcam" autoplay playsinline></video>
+    <canvas id="overlayCanvas"></canvas>
+    <button class="capture-btn" onclick="capturePhoto()">Click Photo</button>
+    <img id="capturedPhoto" alt="Captured Image">
+  </div>
+
+  <div class="footer">&copy; 2025 Classic Aviators. All Rights Reserved.</div>
+
+  <script defer src="https://cdn.jsdelivr.net/npm/face-api.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@vladmandic/face-api@1.7.3/dist/face-api.min.js"></script>
+  
+  <script>
+    function changeImage(imageSrc) {
+      document.getElementById('productImage').src = imageSrc;
+    }
+
+    function redirectToCheckout() {
+      window.location.href = 'checkout.html';
+    }
+
+    async function tryNow() {
+      let video = document.getElementById("webcam");
+      let canvas = document.getElementById("overlayCanvas");
+      let container = document.getElementById("webcamContainer");
+      container.style.display = "flex";
+
+      navigator.mediaDevices.getUserMedia({ video: {} })
+        .then((stream) => {
+          video.srcObject = stream;
+        })
+        .catch((error) => console.error("Webcam access denied!", error));
+
+      await loadFaceModels();
+    }
+
+    async function loadFaceModels() {
+      await faceapi.nets.tinyFaceDetector.loadFromUri('/models');
+      await faceapi.nets.faceLandmark68Net.loadFromUri('/models');
+      console.log("Face detection models loaded!");
+    }
+
+    function capturePhoto() {
+      let video = document.getElementById("webcam");
+      let canvas = document.createElement("canvas");
+      let capturedPhoto = document.getElementById("capturedPhoto");
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      let ctx = canvas.getContext("2d");
+      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+      capturedPhoto.src = canvas.toDataURL("image/png");
+      capturedPhoto.style.display = "block";
+    }
+  </script>
+</body>
+</html>
