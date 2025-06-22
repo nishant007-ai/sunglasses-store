@@ -1,51 +1,71 @@
-# 🕶️ AI Sunglasses Store
+# 🕶️ Sunglasses Store – AI-Powered E-Commerce Website
 
-A modern sunglasses e-commerce website featuring an **AI-based Face Detection system** that allows users to **try on sunglasses virtually** using their webcam — inspired by Lenskart's 3D Try-On.
-
----
-
-## 💡 Features
-
-- 🛒 Full e-commerce layout (Home, Products, Contact, Cart)
-- 🧠 **AI Face Detection** using OpenCV or MediaPipe
-- 👓 Real-time 3D Try-On of sunglasses via webcam
-- 🎨 Responsive design (mobile + desktop)
-- ⚙️ Node.js / Express backend (if applicable)
-- 💾 User cart & order storage (if backend is connected)
+A modern e-commerce website for selling sunglasses, powered by **AI 3D Try-On** using **face detection** and **real-time camera preview**. Built with full-stack features to simulate a real online store.
 
 ---
 
-## 🚀 Live Demo
+## 🚀 Features
 
-👉 [Link to your deployed site] (e.g., via GitHub Pages, Vercel)
+- 🛒 **Online Storefront** – View and explore stylish sunglasses collections
+- 🔍 **Product Pages** – Classic, sport, and premium sunglasses with full details
+- 🧠 **AI 3D Try-On** – Face detection + overlay using OpenCV (like Lenskart)
+- 🎥 **Real-Time Preview** – Capture and overlay sunglasses using webcam
+- 📦 **Order System** – Add to cart, generate order ID, and simulate purchases
+- 📄 **Login / Signup System**
+- 🧾 **Admin Features** – Manage orders and product listings
+- 📊 **Database Integration** – MySQL backend support
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Frontend:** HTML, CSS, JavaScript
-- **AI:** OpenCV, TensorFlow.js, or MediaPipe
-- **Backend:** Node.js, Express (if used)
-- **Deployment:** GitHub Pages / Vercel / Render
+**Frontend:**
+- HTML, CSS, JavaScript
+- Responsive design
+- Hero sections, animations, video backgrounds
+
+**Backend:**
+- Node.js, Express.js
+- MySQL
+- REST APIs
+
+**AI & Tools:**
+- OpenCV for face detection and overlay
+- Webcam integration
 
 ---
 
-## 📸 Preview
+## 📁 Project Structure
 
-![Face detection try-on gif](preview.gif)
-
----
-
-## 🧠 AI Face Detection Overview
-
-This project uses a webcam feed to detect facial landmarks and overlays sunglasses in real-time, giving users an instant preview of how the product looks on their face.
 
 ---
 
-## 📦 How to Run Locally
+## 💡 Future Plans
 
-```bash
-git clone https://github.com/your-username/sunglasses-store.git
-cd sunglasses-store
-npm install
-npm start
+- 🧠 Use TensorFlow.js for better real-time detection
+- 🪙 Add Razorpay or Stripe for payments
+- 🛒 Cart & Wishlist feature
+- 📦 Inventory management dashboard
+
+---
+
+## 📸 Screenshots
+
+_(Add screenshots or demo video here if you want)_
+
+---
+
+## 🌐 Live Demo
+
+Coming Soon…
+
+---
+
+## 🧑‍💻 Author
+
+**Nishant Jadhav**  
+[LinkedIn](https://www.linkedin.com/in/nishant007-ai) | [GitHub](https://github.com/nishant007-ai)
+
+---
+
+<!-- This is a test change for Pull Shark badge -->
